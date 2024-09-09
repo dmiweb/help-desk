@@ -1,0 +1,282 @@
+body {
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #696969;
+}
+
+.preloader {
+  position: fixed;
+  margin: auto;
+  top: 150px; 
+  left: 0; 
+  right: 0;
+  width: 40px;
+  height: 40px;
+  z-index: 9999;
+  background-image: url('../img/preloader.gif');
+  background-repeat: none;
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+.app-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 200;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 100px;
+}
+
+.root__ticket-add-btn {
+  align-self: flex-end;
+  padding: 12px 28px;
+  border: 1px solid #696969;
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: 17px;
+  color: #696969;
+  cursor: pointer;
+}
+
+.root__ticket-add-btn:active {
+  box-shadow: 0 0 5px #696969;
+}
+
+.add-form {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  right: 0;
+  max-width: 400px;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  border: 1px solid #696969;
+  border-radius: 15px;
+  background-color: #ffffff;
+  z-index: 999;
+}
+
+.add-form__title {
+  margin: 0;
+  margin-bottom: 30px;
+  font-size: 17px;
+  text-align: center;
+  color: #696969;
+}
+
+.add-form__input-container {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.input-container__title {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-container__name {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  border: 1px solid #696969;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: #696969;
+  outline: none;
+}
+
+.input-container__description {
+  display: block;
+  width: 100%;
+  min-height: 70px;
+  box-sizing: border-box;
+  padding: 5px;
+  border: 1px solid #696969;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: #696969;
+  outline: none;
+  overflow: hidden;
+  resize: none;
+}
+
+.input-container__mirror-description {
+  position: absolute;
+  z-index: -1;
+  white-space: pre-wrap;
+  visibility: hidden;
+}
+
+.add-form-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.form-btn {
+  padding: 10px 18px;
+  border: 1px solid #696969;
+  border-radius: 10px;
+  font-size: 17px;
+  color: #696969;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.form-btn:active {
+  box-shadow: 0 0 5px #696969;
+}
+
+/* -----------------ticket list------------------- */
+
+.root__ticket-list {
+  padding: 0;
+  list-style: none;
+}
+
+.ticket {
+  width: 100%;
+  padding: 15px 10px;
+  border: 1px solid #696969;
+  border-bottom: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.ticket:last-child {
+  border-bottom: 1px solid #696969;
+}
+
+.ticket__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.item__left-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.status-checkbox__input {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+}
+
+.status-checkbox__custom::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #696969;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.status-checkbox__input:checked+.status-checkbox__custom::before {
+  content: "\2714";
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  color: #696969;
+}
+
+.item__name {
+  max-width: 500px;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 100;
+  line-height: 1;
+}
+
+.item__right-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.item-options__date-creation {
+  margin-right: 20px;
+  line-height: 1;
+}
+
+.item-options__edit-btn {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #696969;
+  border-radius: 50%;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.item-options__edit-btn:active {
+  box-shadow: 0 0 5px #696969;
+}
+
+.item-options__delete-btn {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #696969;
+  border-radius: 50%;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.item-options__delete-btn:active {
+  box-shadow: 0 0 5px #696969;
+}
+
+.ticket__description {
+  max-width: 500px;
+  padding: 15px 43px;
+}
+
+.widget-confirm-delete {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  max-width: 400px;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  border: 1px solid #696969;
+  border-radius: 15px;
+  background-color: #ffffff;
+  z-index: 999;
+}
+
+.widget-confirm-delete__title {
+  margin: 0;
+  margin-bottom: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  text-align: center;
+  color: #696969;
+}
+
+.widget-confirm-delete__text {
+  padding-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  color: #696969;
+}
+
+.widget-btn {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
