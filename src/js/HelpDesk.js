@@ -26,34 +26,39 @@ export default class HelpDesk {
     this.requestDeleteTicket = this.requestDeleteTicket.bind(this);
   }
 
-  async init() {
-    this.ticketForm.renderTicketForm();
-    this.reloadTicketList();
-  }
-
   async reloadTicketList() {
     const ticketListElement = document.querySelector(".ticket-list");
 
-    const list = await this.ticketService.list(createRequest);
+    try {
+      const list = await this.ticketService.list(createRequest);
 
-    ticketListElement.innerHTML = "";
+      ticketListElement.innerHTML = "";
 
-    list.forEach((ticket) => {
-      new TicketView(ticket).renderTicket();
-    });
+      list.forEach((ticket) => {
+        new TicketView(ticket).renderTicket();
+      });
 
-    document.querySelector(".preloader").remove();
+      document.querySelector(".preloader").remove();
 
-    ticketListElement.addEventListener("click", this.onRequestDescription);
-    document
-      .querySelector(".root__ticket-add-btn")
-      .addEventListener("click", this.createTicket);
-    document.documentElement.addEventListener("click", this.editTicket);
-    document.documentElement.addEventListener("click", this.requestEditStatus);
-    document.documentElement.addEventListener(
-      "click",
-      this.requestDeleteTicket
-    );
+      ticketListElement.addEventListener("click", this.onRequestDescription);
+      document
+        .querySelector(".root__ticket-add-btn")
+        .addEventListener("click", this.createTicket);
+      document.documentElement.addEventListener("click", this.editTicket);
+      document.documentElement.addEventListener("click", this.requestEditStatus);
+      document.documentElement.addEventListener(
+        "click",
+        this.requestDeleteTicket
+      );
+    } catch (e) {
+      document.querySelector(".preloader").remove();
+
+      alert('Сервер http://localhost:7070 недоступен!');
+
+      setTimeout(() => {
+        this.reloadTicketList();
+      }, 5000);
+    }
   }
 
   createTicket() {
@@ -220,5 +225,10 @@ export default class HelpDesk {
           this.reloadTicketList();
         });
     }
+  }
+
+  async init() {
+    this.ticketForm.renderTicketForm();
+    this.reloadTicketList();
   }
 }
